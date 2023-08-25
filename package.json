@@ -1,0 +1,8 @@
+{
+  "name": "sonic-boom-media-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:jdsoucy/sonic-boom-media-website.git",
+  "author": "jdsoucy <jerome.duguay-soucy@jll.com>",
+  "license": "MIT"
+}
