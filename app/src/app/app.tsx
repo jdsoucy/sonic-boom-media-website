@@ -35,6 +35,10 @@ export function App() {
           </div>
         </div>
       </section>
+      <section className="bg-lighter text-lg font-bold text-dark pt-8 pb-16 px-8 bg-noise text-center">
+        <h3 className="text-4xl pb-4">Recent work</h3>
+        <iframe className="m-auto w-[320px] h-[180px] sm:w-[420px] sm:h-[236px] md:w-[560px] md:h-[315px] lg:w-[760px] lg:h-[426px]" src="https://www.youtube.com/embed/8L-BGYIq2Xw?si=kRUqKKdibp3DX8aH" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen={true}></iframe>
+      </section>
       <section className="bg-dark text-lg font-bold text-lighter text-center py-16 px-8 bg-noise">
         <h3 id="pricing" className="text-5xl">Pricing</h3>
         <div className="flex flex-col md:flex-row max-w-4xl m-auto space-y-4 md:space-y-0 md:space-x-4 my-8">
