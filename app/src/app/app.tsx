@@ -1,10 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { useState } from 'react';
 import { Button, Card, FAQ } from '../components';
 import { MdCall } from 'react-icons/md';
+import cn from 'classnames';
 import Logo from '../assets/sbm_logo.png';
 import faqs from '../data/faqs.json';
 
 export function App() {
+  const [activeRatio, setActiveRatio] = useState('landscape');
+
   const email = 'hello@sonicboom.media';
   return (
     <div className="bg-light">
@@ -21,23 +25,46 @@ export function App() {
         <p>Landscape for the web</p>
         <p>Square and portrait for social media</p>
         <div className="flex flex-col md:flex-row md:h-[200px] max-w-lg m-auto space-y-4 md:space-y-0 md:space-x-4 my-8 items-center justify-center text-sm md:text-lg">
-          <div className="relative md:mr-6">
-            <div className="aspect-video bg-dark text-light h-[75px] md:h-[200px]"></div>
+          <div className="relative md:mr-6 cursor-pointer " onClick={() => setActiveRatio('landscape')}>
+            <div
+              className={cn(
+                'rounded aspect-video bg-dark text-light h-[75px] md:h-[200px]',
+                {
+                  'border-primary border-8': activeRatio === 'landscape',
+                }
+              )}
+            />
             <div className="absolute text-light top-0 md:top-0 left-0 w-full h-full flex items-center justify-center">16:9</div>
           </div>
-          <div className="relative">
-            <div className="aspect-square bg-dark text-light h-[75px] md:h-[200px]"></div>
+          <div className="relative cursor-pointer" onClick={() => setActiveRatio('square')}>
+            <div
+              className={cn(
+                'rounded aspect-square bg-dark text-light h-[75px] md:h-[200px]',
+                {
+                  'border-primary border-8': activeRatio === 'square',
+                }
+              )}
+            />
             <div className="absolute text-light top-0 left-0 w-full h-full flex items-center justify-center">1:1</div>
           </div>
-          <div className="relative w-[75px]  md:w-[200px]">
-            <div className="aspect-video mt-4 md:mt-0 rotate-90 bg-dark text-light w-[75px] md:w-[200px]"></div>
+          <div className="relative w-[75px] md:w-[200px] cursor-pointer" onClick={() => setActiveRatio('portrait')}>
+            <div
+              className={cn(
+                'rounded aspect-video mt-4 md:mt-0 rotate-90 bg-dark text-light w-[75px] md:w-[200px]',
+                {
+                  'border-primary border-8': activeRatio === 'portrait',
+                }
+              )}
+            />
             <div className="absolute text-light top-2 md:top-0 left-0 w-full h-full flex items-center justify-center">9:16</div>
           </div>
         </div>
       </section>
       <section className="bg-lighter text-lg font-bold text-dark pt-8 pb-16 px-8 bg-noise text-center">
         <h3 className="text-4xl pb-4">Recent work</h3>
-        <iframe className="m-auto w-[320px] h-[180px] sm:w-[420px] sm:h-[236px] md:w-[560px] md:h-[315px] lg:w-[760px] lg:h-[426px]" src="https://www.youtube.com/embed/8L-BGYIq2Xw?si=kRUqKKdibp3DX8aH" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen={true}></iframe>
+        {activeRatio === 'square' && <iframe className="m-auto w-[180px] h-[180px] sm:w-[236px] sm:h-[236px] md:w-[315px] md:h-[315px] lg:w-[426px] lg:h-[426px]" src="https://www.youtube.com/embed/8NAhrS0Y34k" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen={true}></iframe>}
+        {activeRatio === 'landscape' && <iframe className="m-auto w-[320px] h-[180px] sm:w-[420px] sm:h-[236px] md:w-[560px] md:h-[315px] lg:w-[760px] lg:h-[426px]" src="https://www.youtube.com/embed/_wWz_HQIkQs" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen={true}></iframe>}
+        {activeRatio === 'portrait' && <iframe className="m-auto w-[180px] h-[320px] sm:w-[236px] sm:h-[420px] md:w-[315px] md:h-[560px] lg:w-[426px] lg:h-[760px]" src="https://www.youtube.com/embed/Zyf9G4cV3hM" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen={true}></iframe>}
       </section>
       <section className="bg-dark text-lg font-bold text-lighter text-center py-16 px-8 bg-noise">
         <h3 id="pricing" className="text-5xl">Pricing</h3>
